@@ -30,25 +30,25 @@ It is part of my DevOps learning journey.
 
 ### 1. Go to your project folder:
 Run:
+```
 cd /home/prisca/web-project
-
+```
 
 
 Make sure it looks like this:
-
+```
 web-project/
  ├── index.html
  ├── style.css
-
+```
 
 ### 2. Now create Dockerfile:
 Run:
+```
 nano Dockerfile
-
-
-
+```
 In your terminal, type in:
-
+```bash
 FROM nginx:alpine
 
 COPY index.html /usr/share/nginx/html/index.html
@@ -58,43 +58,44 @@ COPY style.css /usr/share/nginx/html/style.css
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
-
+```
 
 Then Save and exit (Ctrl + X, press Y and Enter)
 
 
 ### 3. Build Docker Image
 
-Run:
+Run:The command to build the docker image is run from the same directory as the Dockerfile
+```
 docker build -t prisca-web-app .
-
+```
 
 ### 4. Create Custom Bridge Network
 
 Now create your own network:
-
+```
 docker network create prisca--network
-
+```
 
 Check it:
-
+```
 docker network ls
-
+```
 You’ll see: prisca--network
 
 
 ### 5. Run Container on Custom Network
 
 Now run your container:
-
+```
 docker run -d --name web-container --network prisca--network -p 8080:80 prisca-web-app
-
+```
 ### 6. Open in Browser
-
+Your Docker container is port-forwarded to your browser using this socket address
 Now open:
-
+```
 http://localhost:8080
-
+```
 🎉 Your HTML + CSS will show.
 
 ### 7. Push to dockerhub
@@ -111,9 +112,9 @@ Example (I’ll use priskah26)
 ### 8. Login to Docker Hub from Terminal
 
 Run:
-
+```
 docker login
-
+```
 Enter:
 - Username
 - Password
@@ -125,54 +126,45 @@ Login Succeeded
 ### 9. Tag Your Image for Docker Hub
 
 Run:
-
+```
 docker tag prisca-web-app priskah26/prisca-web-app:latest
-
+```
 
 ### 10. Push to Docker Hub
 
 Run:
-
+```
 docker push priskah26/prisca-web-app:latest
-
+```
 
 ### 11. Test by Pulling It Again 
 
 Run:
-
+```
 docker pull priskah26/prisca-web-app:latest
+```
 
-
-### 12. Then test:
-
-docker run -p 8080:80 priskah26/prisca-web-app:v1
-
-OR
-
-docker run -p 8080:80 priskah26/prisca-web-app:latest
-
-
-### 13: Check Status
+### 12: Check Status
 
 See container:
-
+```
 docker ps
-
+```
 
 Logs:
-
+```
 docker logs web-container
-
+```
 
 Network info:
-
+```
 docker inspect web-container
-
+```
 
 Open browser:
-
+```
 http://localhost:8080
-
+```
 If it opens; perfect.
 
 
@@ -184,3 +176,4 @@ Nigeria 🇳🇬
 
 📄 License
 Free for learning and practice.
+
