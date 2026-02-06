@@ -2,6 +2,22 @@
 
 This project is a simple static website built with HTML and CSS and containerized using Docker and Nginx.
 
+## Project Task
+
+- Create a Dockerfile to containerize the application
+- Build the container image from the dockerfile
+- Create a custom bridge network for the container 
+- Run the container using a hostport:container port and on the custom network created
+- Access the application on the broswer
+- Push application image to your Docker Hub repository
+- Access docker logs and report finding
+- Access container logs
+- Create a new docker volume on the host
+- inspect the docker volume
+- Attach the volume(bind mount) to the container. HINT: stop/remove and rerun the container with volume
+- workaround adding data to the bind mount volume and accessing the data in the container and on the Host
+
+
 ## 📌 Project Description
 
 This project demonstrates how to package a basic web application into a Docker container, run it on a custom network, and publish it to Docker Hub.
