@@ -20,5 +20,5 @@ class TestHelloWorld(unittest.TestCase):
         self.assertEqual(captured_output.getvalue().strip(), "HELLO WORLD")
 
 
-if _name_ == '_main_':
-    unittest.main()
+if _name_ == '__main__':
+    unittest.__main__()
