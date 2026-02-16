@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: set up python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
       - name: Run tests
-        run: python3 testcase.py
+        run: python3 -m unittest testcase.py
       - name: Build Docker image
         run: docker build -t web-project  .
