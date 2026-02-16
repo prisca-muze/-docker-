@@ -14,7 +14,7 @@ class TestHelloWorld(unittest.TestCase):
         exec(open('test.py').read())
         
         # Reset stdout
-        sys.stdout = sys._stdout_
+        sys.stdout = sys.__stdout__
         
         # Check the output
         self.assertEqual(captured_output.getvalue().strip(), "HELLO WORLD")
